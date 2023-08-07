@@ -1,0 +1,44 @@
+const date = new Date();
+let day = date.getDate();
+let month = date.getMonth() + 1; //months start at index of 0, add 1 
+let year = date.getFullYear();
+console.log(grabFullDate(day, month, year));
+
+function daysInTheMonth(month, year){
+  return new Date(year, month, 0).getDate();
+}
+
+function previousDay(){
+//   if(day > 1) day - 1;
+//   else{
+//     grabFullDate(daysInTheMonth(month, year), month, year)
+//   }
+}
+
+function formattedDay(day){
+  return day < 10 ? '0' + day: day;
+}
+function formattedMonth(month){
+  return month < 10 ? '0' + month: month;
+}
+
+
+function grabFullDate(day, month, year){
+    let fullDate = `${year}-${formattedMonth(month)}-${formattedDay(day)}`;
+    return fullDate; 
+}
+
+
+function PreviousDay(){
+}
+
+function RandomDay(){
+    console.log("This doesn't work. Will I make it work? Eventually.");
+}
+
+function OpenGitHub(){
+    window.open('https://github.com/bloominstituteoftechnology/module-project-component-composition-dwilliams304', '_blank');
+}
+
+
+export {PreviousDay, RandomDay, OpenGitHub}

@@ -3,16 +3,14 @@ import axios from 'axios';
 import Details from './Details';
 import Nav from './Nav';
 import URL from '../constants/constants';
-
-// const API_KEY = 'DEMO_KEY';
-// const URL = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`
+import { PreviousDay, RandomDay, OpenGitHub } from './Helpers'; //Only functionality currently implemented is the OpenGitHub button.
 
 function App() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
     function grabPhoto () {
-      axios.get(URL)
+      axios.get(URL) //Use axios to fetch data from a certain API -> Nasa APOD
       .then(res => {
         console.log(res.data);
         setData(res.data);
@@ -33,12 +31,12 @@ function App() {
       url: "https://apod.nasa.gov/apod/image/2308/SN1006_Hubble_960.jpg"
     })
     
-  }, [])
+  }, []) //Run on first render, nothing else
 
   if(!data) return <p>Loading photo of the day...</p>
   return (
     <div>
-      <Nav date={data.date}/>
+      <Nav date={data.date} randomDate={RandomDay} openGitHub={OpenGitHub}/> {/** Pass in the functions so th buttons can use them in the Nav component */}
 
       <img src={data.url} className='main-pic'/>
 
